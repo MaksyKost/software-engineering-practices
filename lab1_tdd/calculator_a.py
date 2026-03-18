@@ -4,4 +4,3 @@ def Add(numbers):
 
     parts = numbers.split(",")
     return sum(int(x) for x in parts)
-
