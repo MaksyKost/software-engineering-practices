@@ -20,5 +20,12 @@ class TestAdd(unittest.TestCase):
         with self.assertRaises(ValueError):
             Add("I use Arch btw!")
 
+    def test_invalid_newline(self):
+        with self.assertRaises(ValueError):
+            Add("1,\n")
+
+    def test_valid_newline(self):
+        self.assertEqual(Add("1\n2,3"), 6)
+
 if __name__ == "__main__":
     unittest.main()
