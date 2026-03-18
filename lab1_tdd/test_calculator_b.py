@@ -20,6 +20,13 @@ class TestCalculator(unittest.TestCase):
         with self.assertRaises(ValueError):
             Add("1,,6")
 
+    def test_many_numbers_with_n(self):
+        self.assertEqual(Add("1\n2,3"), 6)
+
+    def test_invalid_newline(self):
+        with self.assertRaises(ValueError):
+            Add("1,\n")
+
 
 if __name__ == "__main__":
     unittest.main()
