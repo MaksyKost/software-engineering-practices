@@ -2,6 +2,7 @@ def Add(numbers):
     if numbers == "":
         return 0
     try:
+        numbers = numbers.replace("\n", ",")
         parts = numbers.split(",")
         return sum(int(x) for x in parts)
     except ValueError:
