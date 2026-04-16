@@ -12,7 +12,7 @@ class TennisGame4:
             self.receiver_score += 1
 
     def score(self):
-        result = Deuce(
+        return Deuce(               # result --> return
             self,
             GameServer(
                 self,
@@ -21,8 +21,7 @@ class TennisGame4:
                     AdvantageServer(self, AdvantageReceiver(self, DefaultResult(self))),
                 ),
             ),
-        ).get_result()
-        return result.format()
+        ).get_result().format()
 
     def receiver_has_advantage(self):
         return (
