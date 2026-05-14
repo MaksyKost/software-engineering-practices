@@ -1,0 +1,36 @@
+1. Most (Bridge)
+
+2. Ten wzorzec jest potrzebny kiedy chcemy odzielić impleentację i abstrakcję aplikacji. Wyobraźmy że jest jakaś aplikacja która ma kilka wersji. Ta aplikacja też wymaga specyficznego dopasowania pod każdy system operacyjny. Dla rozwiązania takiego problemu stosuje się wzorzec projektowy - most. Po jednej stronie będzie abstrakcja (wersja aplikacji np Pro, Lite) a z innej strony będzie implementacja (implementacja pod konkretny system operacyjny)
+
+Przykład: jest aplikacja w dwóch wersjach (np. Lite i Pro), która musi działać na różnych systemach operacyjnych (np. Windows i Linux).
+Bez wzorca most trzeba stworzyć 4 klasy: WindowsLite, WindowsPro, LinuxLite, LinuxPro. Każdy nowy system lub wersja potęguje liczbę klas.
+Wzorzec ten stosujemy, gdy klasa ma wiele wariantów funkcjonalności, które rozwijają się w dwóch niezależnych kierunkach
+
+
+
+3.
+Immplementacja polega na zamianie dużejz1= klasę na dwie niezależne hierarchie:  
+
+    Abstrakcja: Warstwa sterująca (np. interfejs użytkownika, wersja aplikacji), która zawiera odniesienie do obiektu implementacji.
+
+    Implementacja: Warstwa wykonawcza (np. specyficzne instrukcje systemu operacyjnego).
+
+Wskazówki implementacyjne:
+
+    Stwórz interfejs Platform (Implementacja) z metodami takimi jak executeTask().
+
+    Stwórz konkretne klasy implementacji: WindowsPlatform, LinuxPlatform.
+
+    Stwórz klasę abstrakcyjną Application (Abstrakcja), która w konstruktorze przyjmuje obiekt typu Platform.
+
+    Klasy LiteApp i ProApp dziedziczą po Application i wykorzystują przekazaną platformę do działania, nie wiedząc, na jakim systemie dokładnie pracują. 
+
+4. Zalety:
+	Lepsza czytelność kodu
+	Uniwersalna architektura
+	Można wprowadzać nowe abstrakcje i implementacje niezależnie od siebie
+   Wady: 
+   	może być overengineering
+   	może być niepotrzebny kod
+   	trudniejszy w implementacji
+   	trudniej zaplanować od razu
